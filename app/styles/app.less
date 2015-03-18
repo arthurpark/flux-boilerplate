@@ -1,0 +1,145 @@
+@import 'material.less';
+@import 'layout/_header';
+
+.layout {
+  height: 100%;
+}
+
+.side-nav {
+  position: fixed;
+  width: 240px;
+  top: 60px;
+  left: -240px;
+  bottom: 0;
+  transition: all 0.2s ease-out;
+  z-index: 2;
+
+  .nav {
+    padding: 24px;
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #999;
+  }
+
+  a:hover {
+    color: #333;
+  }
+
+  a:visited {
+    color: #999;
+  }
+
+  li {
+    padding: 12px 0;
+  }
+
+  li + li {
+    border-top: 1px solid #ccc;
+  }
+}
+
+.main {
+  height: 100%;
+}
+
+.page {
+  position: relative;
+  height: 100%;
+  padding: 24px;
+  transition: all 0.2s ease-out;
+  z-index: 1;
+  h2 {
+    text-align: center;
+  }
+}
+
+.app .page {
+  top: 60px;
+  margin-left: 0;
+}
+
+.app.menu-open {
+  .side-nav {
+    left: 0;
+  }
+
+  // .page {
+  //   margin-left: 240px;
+  // }
+
+}
+
+.centered {
+   position: relative;
+   top: 50%;
+   transform: translate(0, -50%);
+
+   width: 100%;
+   margin: 0 auto;
+   text-align: center;
+
+   font-size: 22px;
+ }
+
+ .login-page {
+   position: relative;
+   h1 {
+     margin: 0 0 30px 0;
+     font-size: 48px;
+   }
+
+   .centered {
+     position: relative;
+     top: 50%;
+     transform: translate(0, -50%);
+
+     width: 100%;
+     margin: 0 auto;
+     text-align: center;
+
+     font-size: 22px;
+   }
+
+   .input-group + .input-group {
+     margin: 15px;
+   }
+
+   label {
+     display: inline-block;
+     width: 170px;
+     text-align: right;
+     margin-right: 30px;
+   }
+
+   input {
+     width: 200px;
+     padding: 8px 12px;
+     border: none;
+    //  border-bottom: 1px solid @border-color;
+     &:focus {
+       outline: none;
+      //  border-bottom: 1px solid @blue-400;
+     }
+   }
+
+   .actions {
+     margin-top: 30px;
+   }
+
+   button {
+     outline: none;
+    //  background-color: @blue-400;
+    //  color: @white;
+     width: 400px;
+     height: 60px;
+     border: none;
+     &:hover {
+       color: #fff;
+      //  background-color: @blue-500;
+     }
+   }
+ }
