@@ -1,14 +1,21 @@
 var React = require('react/addons');
 var Router = require('react-router');
 var Link = Router.Link;
+var SessionStore = require('../stores/session-store');
 
 var LoginPage = React.createClass({
   displayName: "LoginPage",
 
-  mixins: [ Router.Navigation ],
+  mixins: [ Router.Navigation, Router.State ],
 
   statics: {
-    attemptedTransition: null
+    attemptedTransition: null,
+    willTransitionTo: function(transition) {
+      if (SessionStore.isLoggedIn()) {
+        this.attemptedTransition = transition;
+        transition.redirect('app');
+      }
+    }
   },
 
   getInitialState: function() {
@@ -34,11 +41,11 @@ var LoginPage = React.createClass({
     return (
       <div className="page login-page mui-paper mui-z-depth-4">
         <div className="centered">
-          <h1>Enter handle to start</h1>
+          <h1>Enter email to start</h1>
           <form onSubmit={this.onSubmit}>
             <div className={handleClasses}>
-              <label>Handle</label>
-              <input type="text" ref="handle" onChange={this.onHandleChange} />
+              <label>Email</label>
+              <input type="email" ref="email" onChange={this.onEmailChange} />
               <span className="mui-input-error">{handleError}</span>
             </div>
             <div className="actions">
@@ -50,13 +57,20 @@ var LoginPage = React.createClass({
     )
   },
 
-  onHandleChange: function(e) {
-    this.setState({ handle: e.target.value });
+  onEmailChange: function(e) {
+    // validate
+    this.setState({ email: e.target.value });
   },
 
   onSubmit: function(e) {
     e.preventDefault();
-    var handle = this.refs.handle.getDOMNode().value;
+    var email = this.refs.email.getDOMNode().value;
+
+    // validate
+
+
+    // login
+    SessionStore.login({ email: email });
 
     // TODO: Try login then do the following
     if (LoginPage.attemptedTransition) {

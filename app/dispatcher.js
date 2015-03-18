@@ -1,5 +1,5 @@
 Dispatcher = require('flux').Dispatcher;
-assign = require('assign');
+assign = require('object-assign');
 
 var dispatcher = assign(new Dispatcher(), {
 

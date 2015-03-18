@@ -14,6 +14,7 @@ var Page2 = require('./pages/page-2');
 
 module.exports = (
   <Route handler={Layout} path="/">
+    <DefaultRoute path="home" handler={LoginPage} />
 
     <Route name="loggedout" path="/home" handler={LoggedOut}>
       <Route name="login" path="/login" handler={LoginPage} />

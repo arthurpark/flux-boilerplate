@@ -24,10 +24,10 @@
   },
   "homepage": "",
   "devDependencies": {
-    "express": "^4.10.2",
-    "react-router": "^0.12.4",
     "browserify": "^5.10.1",
     "connect-livereload": "~0.3.2",
+    "events": "^1.0.2",
+    "express": "^4.10.2",
     "flux": "^2.0.1",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "0.0.7",
@@ -41,12 +41,11 @@
     "multipipe": "^0.1.1",
     "object-assign": "^2.0.0",
     "react": "^0.12.2",
+    "react-router": "^0.12.4",
     "react-tap-event-plugin": "^0.1.4",
     "reactify": "^0.17.1",
     "tiny-lr": "0.0.5",
     "vinyl-transform": "0.0.1"
   },
-  "dependencies": {
-
-  }
+  "dependencies": {}
 }
