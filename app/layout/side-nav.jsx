@@ -10,7 +10,7 @@ var SideNav = React.createClass({
 	render: function () {
 		return (
 			<div className="side-nav">
-				<Overlay />
+				<Overlay onClick={this.onOverlayClick}/>
 
 				<aside className="nav-container mui-paper mui-z-depth-3">
 					<ul className="nav">
@@ -26,13 +26,17 @@ var SideNav = React.createClass({
 	},
 
 	onLinkClick: function(pageName, e) {
-		console.log('onLinkClick', arguments)
 		AppActions.changeTitle(pageName);
-		// AppActions.closeSideMenu();
+	},
+
+	onOverlayClick: function() {
+		AppActions.closeSideMenu();
 	},
 
 	onLogout: function(e) {
-		console.log('onLogout');
+		// console.log('onLogout');
+		e.preventDefault();
+		AppActions.closeSideMenu();
 		SessionActions.logout();
 	}
 });

@@ -2,13 +2,13 @@ var React = require('react/addons');
 
 var Overlay = React.createClass({
 
-  // propTypes: {
-  //   items: React.PropTypes.array
-  // },
+  propTypes: {
+    onClick: React.PropTypes.func
+  },
 
   render: function() {
     return (
-      <div className="overlay"></div>
+      <div className="overlay" {...this.props}></div>
     );
   }
 });

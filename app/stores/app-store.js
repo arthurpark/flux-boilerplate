@@ -2,7 +2,7 @@ var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var dispatcher = require('../dispatcher');
 
-var title = 'App';
+var title = 'Dashbaord';
 
 var isSideMenuOpen = false;
 
@@ -31,6 +31,11 @@ AppStore.dispatchToken = dispatcher.register(function(payload) {
   var actions = {
     toggleSideMenu: function(payload) {
       isSideMenuOpen = ! isSideMenuOpen;
+      AppStore.emit('change');
+    },
+
+    closeSideMenu: function(payload) {
+      isSideMenuOpen = false;
       AppStore.emit('change');
     },
 

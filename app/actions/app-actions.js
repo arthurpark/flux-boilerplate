@@ -7,6 +7,12 @@ var AppActions = {
     });
   },
 
+  closeSideMenu: function() {
+    dispatcher.handleViewAction({
+      type: 'closeSideMenu'
+    });
+  },
+
   changeTitle: function(newTitle) {
     dispatcher.handleViewAction({
       type: 'changeTitle',
