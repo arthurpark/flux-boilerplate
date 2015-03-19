@@ -47,5 +47,7 @@
     "tiny-lr": "0.0.5",
     "vinyl-transform": "0.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "MD5": "^1.2.1"
+  }
 }

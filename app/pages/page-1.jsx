@@ -4,7 +4,7 @@ var Page1 = React.createClass({
 	render: function() {
 		return (
 			<div className="page page-1">
-			  <h2>Page1</h2>
+        <h2>Page 1</h2>
 			</div>
 		);
   }

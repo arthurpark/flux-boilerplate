@@ -44,8 +44,7 @@ var LoginPage = React.createClass({
           <h1>Enter email to start</h1>
           <form onSubmit={this.onSubmit}>
             <div className={handleClasses}>
-              <label>Email</label>
-              <input type="email" ref="email" onChange={this.onEmailChange} />
+              <input type="email" ref="email" onChange={this.onEmailChange} placeholder="example@abc.com" />
               <span className="mui-input-error">{handleError}</span>
             </div>
             <div className="actions">

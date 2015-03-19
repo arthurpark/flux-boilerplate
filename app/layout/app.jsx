@@ -54,7 +54,7 @@ var App = React.createClass({
 
   changeTitle: function(title, e) {
     console.log('changeTitle', arguments);
-    this.setState({ title: title });
+    this.setState({ title: title, isSideMenuOpen: false });
   },
 
   logout: function(e) {

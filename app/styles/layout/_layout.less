@@ -1,0 +1,74 @@
+@import "_header";
+@import "_side-nav";
+
+.layout {
+  height: 100%;
+}
+
+.main {
+  height: 100%;
+}
+
+.page {
+  position: relative;
+  height: 100%;
+  padding: 24px;
+  transition: all 0.1s ease-out;
+  z-index: 1;
+  h2 {
+    text-align: center;
+  }
+}
+
+.side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  visibility: hidden;;
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.24);
+    opacity: 0;
+    transition: all 0.1s ease-out;
+  }
+}
+
+.nav-container {
+  position: absolute;
+  width: 240px;
+  top: 60px;
+  left: -240px;
+  height: 100%;
+  background-color: #fff;
+  transition: all 0.2s ease-out;
+}
+
+.app .page {
+  top: 60px;
+  margin-left: 0;
+}
+
+.app.menu-open {
+  .side-nav {
+    visibility: visible;
+    .overlay {
+      opacity: 1;
+    }
+    .nav-container {
+      left: 0;
+    }
+  }
+
+  // .page {
+  //   margin-left: 240px;
+  // }
+
+}

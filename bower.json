@@ -1,0 +1,30 @@
+{
+  "name": "flux-boilerplate",
+  "version": "0.0.0",
+  "homepage": "https://github.com/arthurpark/flux-boilerplate",
+  "authors": [
+    "Arthur Park <arthur.park@eventure.com>"
+  ],
+  "description": "Flux boilerplate",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "keywords": [
+    "flux",
+    "react"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "octicons": "~2.2.0",
+    "material-design-icons": "~1.0.1"
+  }
+}

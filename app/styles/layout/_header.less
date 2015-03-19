@@ -1,4 +1,5 @@
 .header {
+  display: flex;
 	height: 60px;
 	background: #2AADE5;
   color: #fff;
@@ -7,8 +8,40 @@
 	left: 0;
 	right: 0;
 	z-index: 998;
+}
 
+.toolbar {
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
   padding: 12px 24px;
+}
+
+.toolbar-left {
+  // margin: 0 0 0 12px;
+  text-align: left;
+}
+
+.toolbar-middle {
+  flex: 1;
+}
+
+.toolbar-right {
+  text-align: right;
+}
+
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 36px;
+  height: 36px;
+}
+
+.menu-btn {
+  font-size: 24px;
+  color: #fff;
+  fill: #fff;
+  stroke: #fff;
 }
 
 .title {
@@ -18,4 +51,21 @@
   font-size: 28px;
   line-height: 32px;
   color: #fff;
+}
+
+.gravatar {
+  display: inline-block;
+  vertical-align: middle;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+
+  .gravatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
 }

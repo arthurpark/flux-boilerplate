@@ -28,6 +28,10 @@ var SessionStore = assign({}, EventEmitter.prototype, {
     } else {
       return false;
     }
+  },
+
+  getEmail: function() {
+    return JSON.parse(localStorage.getItem('session')).email;
   }
 
   // getAll: -> users
