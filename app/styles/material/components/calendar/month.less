@@ -1,0 +1,47 @@
+@import '../../colors';
+
+.month {
+  // width: 280px;
+  margin: 0 auto;
+
+  .month-header {
+    text-align: center;
+    font-size: 20px;
+    padding: 12px;
+  }
+
+  .month-name {
+
+  }
+  .year {
+    font-weight: 500;
+  }
+
+  .selected {
+
+  }
+}
+
+.month-grid {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+
+  .day {
+    width: 14.28%;
+    height: 20px;
+    padding: 4px;
+    text-align: center;
+  }
+  .day-wrapper {
+    // width: 28px;
+    height: 28px;
+    padding: 5px;
+  }
+
+  .today .day-wrapper {
+    border-radius: 50%;
+    background-color: @blue-600;
+    color: #fff;
+  }
+}

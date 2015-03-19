@@ -10,6 +10,7 @@ var LoggedOut = require('./layout/logged-out');
 // Pages
 var LoginPage = require('./pages/login-page');
 var DashboardPage = require('./pages/dashboard-page');
+var CalendarPage = require('./pages/calendar-page');
 var Page1 = require('./pages/page-1');
 var Page2 = require('./pages/page-2');
 
@@ -25,6 +26,9 @@ module.exports = (
 
     <Route name="app" path="/" handler={App}>
       <Route name="dashboard" path="dashboard" handler={DashboardPage} />
+      <Route name="calendar" path="calendar" handler={CalendarPage}>
+
+      </Route>
       <Route name="page1" path="page1" handler={Page1} />
       <Route name="page2" path="page2" handler={Page2} />
       <DefaultRoute handler={DashboardPage} />

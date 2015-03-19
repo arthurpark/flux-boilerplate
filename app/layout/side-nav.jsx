@@ -15,6 +15,7 @@ var SideNav = React.createClass({
         <aside className="nav-container mui-paper mui-z-depth-3">
           <ul className="nav">
             <li><Link to="dashboard" onClick={this.onLinkClick.bind(this, 'Dashboard')}>Dashboard</Link></li>
+            <li><Link to="calendar" onClick={this.onLinkClick.bind(this, 'Calendar')}>Calendar</Link></li>
             <li><Link to="page1" onClick={this.onLinkClick.bind(this, 'Page 1')}>Page 1</Link></li>
             <li><Link to="page2" onClick={this.onLinkClick.bind(this, 'Page 2')}>Page 2</Link></li>
             <li><a href="#" onClick={this.onLogout}>Log out</a></li>
