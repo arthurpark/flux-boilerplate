@@ -25,10 +25,10 @@ var LoggedOut = React.createClass({
     SessionStore.removeChangeListener(this.onSessionStoreChange);
   },
 
-	render: function() {
-		return (
-			<RouteHandler />
-		);
+  render: function() {
+    return (
+      <RouteHandler />
+    );
   },
 
   onSessionStoreChange: function() {

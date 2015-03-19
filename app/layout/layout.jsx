@@ -4,12 +4,12 @@ var RouteHandler = Router.RouteHandler;
 
 var Layout = React.createClass({
 
-	render: function() {
-		return (
-			<section className="layout">
-				<RouteHandler />
-			</section>
-		);
+  render: function() {
+    return (
+      <section className="layout">
+        <RouteHandler />
+      </section>
+    );
   }
 });
 

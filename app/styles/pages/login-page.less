@@ -1,3 +1,6 @@
+@import '../variables';
+@import '../material/colors';
+
 .login-page {
    position: relative;
    h1 {
@@ -32,10 +35,10 @@
      width: 400px;
      padding: 8px 12px;
      border: none;
-    //  border-bottom: 1px solid @border-color;
+     border-bottom: 2px solid @border-color;
      &:focus {
        outline: none;
-      //  border-bottom: 1px solid @blue-400;
+       border-bottom: 2px solid @blue-400;
      }
    }
 
@@ -45,14 +48,14 @@
 
    button {
      outline: none;
-    //  background-color: @blue-400;
-    //  color: @white;
+     background-color: @blue-400;
+     color: @white;
      width: 400px;
      height: 60px;
      border: none;
      &:hover {
        color: #fff;
-      //  background-color: @blue-500;
+       background-color: @blue-500;
      }
    }
  }

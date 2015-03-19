@@ -40,20 +40,20 @@ var App = React.createClass({
     SessionStore.removeChangeListener(this.onSessionStoreChange);
   },
 
-	render: function() {
+  render: function() {
     var classes = React.addons.classSet({
       'app': true,
       'menu-open': this.state.isSideMenuOpen
     });
-		return (
-			<section className={classes}>
-				<Header title={this.state.title} toggleSideMenu={this.toggleSideMenu}/>
+    return (
+      <section className={classes}>
+        <Header title={this.state.title} toggleSideMenu={this.toggleSideMenu}/>
 
-				<SideNav />
+        <SideNav />
 
-				<RouteHandler />
-			</section>
-		);
+        <RouteHandler />
+      </section>
+    );
   },
 
   onAppStoreChange: function() {

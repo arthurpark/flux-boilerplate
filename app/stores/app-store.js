@@ -2,7 +2,7 @@ var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var dispatcher = require('../dispatcher');
 
-var title = 'Dashbaord';
+var title = '';
 
 var isSideMenuOpen = false;
 
