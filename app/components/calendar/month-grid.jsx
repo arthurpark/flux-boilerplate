@@ -1,7 +1,7 @@
 var React = require('react/addons');
 var moment = require('moment');
 
-const WEEKDAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MONTHS = [
   'January', 'Februrary', 'March', 'April', 'May', 'June', 'July',
   'August', 'September', 'October', 'November', 'December'];
@@ -63,14 +63,17 @@ var MonthGrid = React.createClass({
   },
 
   _renderWeek: function(week, index) {
+    var me = this;
     return (
       <div key={index} className="week-row">
-        {week.map(this._renderDay)}
+        {week.map(function(date, dayIndex) {
+          return me._renderDay(date, dayIndex, index);
+        })}
       </div>
     );
   },
 
-  _renderDay: function(date, index) {
+  _renderDay: function(date, index, weekIndex) {
     var today = new Date();
     var isCurrentMonth = date.getMonth() === today.getMonth();
     var clasess = '';
@@ -84,8 +87,13 @@ var MonthGrid = React.createClass({
     } else {
       classes = 'day-cell';
     }
+    var weekDay = <span className="week-day">{WEEKDAYS[index]}</span>;
+
     return <div key={index} className={classes}>
-      <div className="date-label">{date.getDate()}</div>
+      <div className="date-label">
+        {(weekIndex === 0) ? weekDay : ''}
+        <span className="date">{date.getDate()}</span>
+      </div>
     </div>;
   },
 

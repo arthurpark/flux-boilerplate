@@ -60,11 +60,23 @@
     padding: 0 0 0 4px;
     text-align: right;
     border-top: 2px solid @border-color;
+  }
+
+  .week-day,
+  .date {
     color: @grey-500;
   }
 
-  .current-month .date-label {
-    color: @text-color;
+  .week-day {
+    display: inline-block;
+    margin-right: 4px;
+  }
+
+  .current-month {
+    .week-day,
+    .date {
+      color: @text-color;
+    }
   }
 
 
