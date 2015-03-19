@@ -33,16 +33,17 @@ var Month = React.createClass({
           <span className="year">{this.props.date.getFullYear()}</span>
         </header>
         <section className="month-body">
-          <MonthGrid date={this.props.date} />
-          <MonthEventGrid date={this.props.date} />
+          <MonthGrid date={this.props.date} selected={this.state.selected} />
+          <MonthEventGrid date={this.props.date} onDayTouchTap={this._handleDayTouchTap}/>
         </section>
       </div>
     );
   },
 
   _handleDayTouchTap: function(e, date) {
-    console.log(e, date);
-    if (this.props.onDayTouchTap) this.props.onDayTouchTap(e, date);
+    // console.log(e, date);
+    // if (this.props.onDayTouchTap) this.props.onDayTouchTap(e, date);
+    this.setState({ selected: date});
   }
 });
 

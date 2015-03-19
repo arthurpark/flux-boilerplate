@@ -25,6 +25,7 @@
   .selected {
 
   }
+  padding: 0 12px;
 }
 
 .month-body {
@@ -32,7 +33,6 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 0 12px;
 }
 
 .month-grid {
@@ -64,12 +64,21 @@
 
   .week-day,
   .date {
+    display: inline-block;
     color: @grey-500;
+    font-weight: 200;
   }
 
   .week-day {
-    display: inline-block;
-    margin-right: 4px;
+    // margin-right: 4px;
+  }
+
+  .date {
+    width: 20px;
+    height: 20px;
+    padding: 0 3px;
+
+    // text-align: center;
   }
 
   .current-month {
@@ -79,6 +88,29 @@
     }
   }
 
+  .today {
+    .date-label {
+      border-top: 2px solid @red-300;
+    }
+    .date {
+      color: @red-300;
+      font-weight: 600;
+      // border-radius: 50%;
+      // color: @white;
+    }
+  }
+
+  .selected {
+    .date-label {
+      border-top: 2px solid @blue-300;
+    }
+    .date {
+      color: @blue-300;
+      font-weight: 600;
+      // border-radius: 50%;
+      // color: @white;
+    }
+  }
 
 }
 
@@ -94,14 +126,13 @@
     width: 100%;
     flex: 1;
     min-height: 100px;
-
-    display: flex;
   }
 
   .day-cell {
     display: inline-block;
-    flex: 1;
+    width: 100%/7;
     height: 100%;
+    min-height: 100px;
     padding-left: 4px;
   }
 }

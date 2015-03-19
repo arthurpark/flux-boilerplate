@@ -14,14 +14,11 @@ var MonthGrid = React.createClass({
     onDayTouchTap: React.PropTypes.func
   },
 
-  getInitialState: function() {
-    var date = this.props.date;
+  getDefaultProps: function() {
     return {
-      selected: date
+      selected: new Date()
     };
   },
-
-  // getDefaultProps: function() {},
 
   // componentDidMount: function() {},
 
@@ -52,6 +49,7 @@ var MonthGrid = React.createClass({
   },
 
   render: function() {
+    console.log(this.props.selected);
     var weeks = this._getWeeks(this.props.date);
     var today = new Date();
     var isCurrentMonth = this.props.date.getMonth() === today.getMonth();
@@ -76,17 +74,20 @@ var MonthGrid = React.createClass({
   _renderDay: function(date, index, weekIndex) {
     var today = new Date();
     var isCurrentMonth = date.getMonth() === today.getMonth();
-    var clasess = '';
+    var classes = 'day-cell';
     var isToday = date.toDateString() === today.toDateString();
+    var isSelected = date.toDateString() === this.props.selected.toDateString();
     if (isCurrentMonth) {
+      classes += ' current-month'
       if (isToday) {
-        classes = 'day-cell current-month today';
-      } else {
-        classes = 'day-cell current-month';
+        classes += ' today';
       }
-    } else {
-      classes = 'day-cell';
     }
+
+    if (isSelected) {
+      classes += ' selected';
+    }
+
     var weekDay = <span className="week-day">{WEEKDAYS[index]}</span>;
 
     return <div key={index} className={classes}>

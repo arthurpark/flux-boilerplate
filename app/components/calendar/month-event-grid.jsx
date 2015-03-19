@@ -11,7 +11,8 @@ var MonthEventGrid = React.createClass({
 
   propTypes: {
     date: React.PropTypes.instanceOf(Date).isRequired,
-    onDayTouchTap: React.PropTypes.func
+    onDayTouchTap: React.PropTypes.func,
+    events: React.PropTypes.array
   },
 
   getInitialState: function() {
@@ -73,8 +74,8 @@ var MonthEventGrid = React.createClass({
     } else {
       classes = 'day-cell';
     }
-    return <div key={index} className={classes}>
-      <div className="events-container" onClick={this._handleDayTouchTap.bind(null, date)}>
+    return <div key={index} className={classes} onClick={this._handleDayTouchTap.bind(this, date)}>
+      <div className="events-container">
 
       </div>
     </div>;
@@ -91,8 +92,8 @@ var MonthEventGrid = React.createClass({
     );
   },
 
-  _handleDayTouchTap: function(e, date) {
-    console.log(e, date);
+  _handleDayTouchTap: function(date, e) {
+    // console.log(e, date, arguments);
     if (this.props.onDayTouchTap) this.props.onDayTouchTap(e, date);
   }
 });
