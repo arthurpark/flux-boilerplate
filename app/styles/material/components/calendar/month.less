@@ -1,8 +1,13 @@
 @import '../../colors';
+@import '../../../variables';
 
 .month {
-  // width: 280px;
+  width: 100%;
   margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
 
   .month-header {
     text-align: center;
@@ -22,26 +27,69 @@
   }
 }
 
+.month-body {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+}
+
 .month-grid {
   width: 100%;
+  // height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  .week-row {
+    width: 100%;
+    flex: 1;
+    min-height: 100px;
+
+    display: flex;
+  }
+
+  .day-cell {
+    display: inline-block;
+    flex: 1;
+    height: 100%;
+    padding-left: 4px;
+  }
+
+  .date-label {
+    padding: 0 0 0 4px;
+    text-align: right;
+    border-top: 2px solid @border-color;
+    color: @grey-500;
+  }
+
+  .current-month .date-label {
+    color: @text-color;
+  }
+
+
+}
+
+.event-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  table-layout: fixed;
+  display: flex;
+  flex-direction: column;
+  .week-row {
+    width: 100%;
+    flex: 1;
+    min-height: 100px;
 
-  .day {
-    width: 14.28%;
-    height: 20px;
-    padding: 4px;
-    text-align: center;
-  }
-  .day-wrapper {
-    // width: 28px;
-    height: 28px;
-    padding: 5px;
+    display: flex;
   }
 
-  .today .day-wrapper {
-    border-radius: 50%;
-    background-color: @blue-600;
-    color: #fff;
+  .day-cell {
+    display: inline-block;
+    flex: 1;
+    height: 100%;
+    padding-left: 4px;
   }
 }

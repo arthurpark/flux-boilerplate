@@ -18,7 +18,7 @@ var CalendarPage = React.createClass({
 
         </header>
 
-        <section className="">
+        <section className="calendar-view">
           <Month date={this.state.today}/>
         </section>
       </div>
