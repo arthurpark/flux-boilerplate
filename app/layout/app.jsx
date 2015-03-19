@@ -1,19 +1,14 @@
 var React = require('react/addons');
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
+var AppStore = require('../stores/app-store');
+var SessionStore = require('../stores/session-store');
+
 var SideNav = require('./side-nav');
 var Header = require('./header');
-var SessionStore = require('../stores/session-store');
 
 var App = React.createClass({
   mixins: [Router.Navigation, Router.State],
-
-  getInitialState: function() {
-    return {
-      title: 'App',
-      isSideMenuOpen: false
-    };
-  },
 
   statics: {
     attemptedTransition: null,
@@ -28,6 +23,23 @@ var App = React.createClass({
     }
   },
 
+  getInitialState: function() {
+    return {
+      title: AppStore.getTitle(),
+      isSideMenuOpen: AppStore.isSideMenuOpen()
+    };
+  },
+
+  componentWillMount: function() {
+    AppStore.addChangeListener(this.onAppStoreChange);
+    SessionStore.addChangeListener(this.onSessionStoreChange);
+  },
+
+  componentWillUnmount: function() {
+    AppStore.removeChangeListener(this.onAppStoreChange);
+    SessionStore.removeChangeListener(this.onSessionStoreChange);
+  },
+
 	render: function() {
     var classes = React.addons.classSet({
       'app': true,
@@ -37,11 +49,18 @@ var App = React.createClass({
 			<section className={classes}>
 				<Header title={this.state.title} toggleSideMenu={this.toggleSideMenu}/>
 
-				<SideNav changeTitle={this.changeTitle} logout={this.logout}/>
+				<SideNav />
 
 				<RouteHandler />
 			</section>
 		);
+  },
+
+  onAppStoreChange: function() {
+    this.setState({
+      title: AppStore.getTitle(),
+      isSideMenuOpen: AppStore.isSideMenuOpen()
+    });
   },
 
   toggleSideMenu: function(e) {
@@ -57,14 +76,16 @@ var App = React.createClass({
     this.setState({ title: title, isSideMenuOpen: false });
   },
 
-  logout: function(e) {
-    SessionStore.logout();
-    if (App.attemptedTransition) {
-      var transition = App.attemptedTransition;
-      App.attemptedTransition = null;
-      transition.retry();
-    } else {
-      this.replaceWith('loggedout');
+  // This means logging out.
+  onSessionStoreChange: function() {
+    if (! SessionStore.isLoggedIn()) {
+      if (App.attemptedTransition) {
+        var transition = App.attemptedTransition;
+        App.attemptedTransition = null;
+        transition.retry();
+      } else {
+        this.replaceWith('loggedout');
+      }
     }
   }
 });

@@ -2,21 +2,10 @@ var React = require('react/addons');
 var Router = require('react-router');
 var Link = Router.Link;
 var SessionStore = require('../stores/session-store');
+var SessionActions = require('../actions/session-actions');
 
 var LoginPage = React.createClass({
   displayName: "LoginPage",
-
-  mixins: [ Router.Navigation, Router.State ],
-
-  statics: {
-    attemptedTransition: null,
-    willTransitionTo: function(transition) {
-      if (SessionStore.isLoggedIn()) {
-        this.attemptedTransition = transition;
-        transition.redirect('app');
-      }
-    }
-  },
 
   getInitialState: function() {
     return {
@@ -69,16 +58,7 @@ var LoginPage = React.createClass({
 
 
     // login
-    SessionStore.login({ email: email });
-
-    // TODO: Try login then do the following
-    if (LoginPage.attemptedTransition) {
-      var transition = LoginPage.attemptedTransition;
-      LoginPage.attemptedTransition = null;
-      transition.retry();
-    } else {
-      this.replaceWith('app');
-    }
+    SessionActions.login({ email: email });
   }
 
 });
