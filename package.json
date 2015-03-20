@@ -25,6 +25,9 @@
   },
   "homepage": "",
   "devDependencies": {
+
+  },
+  "dependencies": {
     "browserify": "^5.10.1",
     "connect-livereload": "~0.3.2",
     "events": "^1.0.2",
@@ -46,9 +49,7 @@
     "react-tap-event-plugin": "^0.1.4",
     "reactify": "^0.17.1",
     "tiny-lr": "0.0.5",
-    "vinyl-transform": "0.0.1"
-  },
-  "dependencies": {
+    "vinyl-transform": "0.0.1",
     "MD5": "^1.2.1",
     "moment": "^2.9.0"
   }
