@@ -1,15 +1,15 @@
 {
   "name": "flux-boilerplate",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Boilerplate for a flux app",
-  "main": "./",
+  "main": "",
   "scripts": {
     "start": "clear && gulp",
     "postinstall": "gulp build"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/arthurpark/flux-boilerplate"
   },
   "keywords": [
     "flux",
@@ -21,9 +21,9 @@
   "author": "Arthur Park",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/arthurpark/flux-boilerplate/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/arthurpark/flux-boilerplate",
   "devDependencies": {
 
   },
