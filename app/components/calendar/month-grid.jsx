@@ -29,19 +29,17 @@ var MonthGrid = React.createClass({
   },
 
   _getWeeks: function(date) {
+    var firstDay = moment(date).startOf('month').startOf('week').startOf('day');
+    var lastDay = moment(date).endOf('month').endOf('week').startOf('day');
+    var days = lastDay.diff(firstDay, 'days');
     var weeks = [];
-    var month = date.getMonth();
-    var daysInMonth = new Date(date.getFullYear(), month + 1, 0).getDate();
-    var daysPrevMonth = new Date(date.getFullYear(), month - 1, 0).getDate();
-    var firstDay = new Date(date.getFullYear(), month, 1);
-    var firstSunday = this._getFirstSunday(firstDay);
+    var compare = firstDay.clone();
 
-    // Show 6 weeks for every month
-    for (var i = 0; i < 6; i++) {
+    while (compare.isBefore(lastDay)) {
       var week = [];
-      for (var j = 0; j < 7; j++) {
-        var dayFromFirstSunday = i* 7 + j + 1;
-        week.push(new Date(new Date(firstSunday.getTime()).setDate(dayFromFirstSunday)));
+      for (var day in WEEKDAYS) {
+        week.push(compare.clone().toDate());
+        compare.add('days', 1);
       }
       weeks.push(week);
     }
@@ -49,7 +47,6 @@ var MonthGrid = React.createClass({
   },
 
   render: function() {
-    console.log(this.props.selected);
     var weeks = this._getWeeks(this.props.date);
     var today = new Date();
     var isCurrentMonth = this.props.date.getMonth() === today.getMonth();
@@ -72,11 +69,12 @@ var MonthGrid = React.createClass({
   },
 
   _renderDay: function(date, index, weekIndex) {
+    var isCurrentMonth = (date.getMonth() === this.props.date.getMonth());
     var today = new Date();
-    var isCurrentMonth = date.getMonth() === today.getMonth();
-    var classes = 'day-cell';
     var isToday = date.toDateString() === today.toDateString();
     var isSelected = date.toDateString() === this.props.selected.toDateString();
+    var classes = 'day-cell';
+
     if (isCurrentMonth) {
       classes += ' current-month'
       if (isToday) {
@@ -99,7 +97,6 @@ var MonthGrid = React.createClass({
   },
 
   _handleDayTouchTap: function(e, date) {
-    console.log(e, date);
     if (this.props.onDayTouchTap) this.props.onDayTouchTap(e, date);
   }
 });

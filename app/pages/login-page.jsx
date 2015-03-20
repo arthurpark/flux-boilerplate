@@ -1,4 +1,5 @@
 var React = require('react/addons');
+var Tap = require('../mixins/tap');
 var Router = require('react-router');
 var Link = Router.Link;
 var SessionStore = require('../stores/session-store');
@@ -6,6 +7,8 @@ var SessionActions = require('../actions/session-actions');
 
 var LoginPage = React.createClass({
   displayName: "LoginPage",
+
+  mixins: [Tap],
 
   getInitialState: function() {
     return {
@@ -37,7 +40,7 @@ var LoginPage = React.createClass({
               <span className="mui-input-error">{handleError}</span>
             </div>
             <div className="actions">
-              <button type="subumit" className="mui-raised-button" onClick={this.handleLogin}>Log in</button>
+              <button type="subumit" className="mui-raised-button" onTouchTap={this.handleLogin}>Log in</button>
             </div>
           </form>
         </div>

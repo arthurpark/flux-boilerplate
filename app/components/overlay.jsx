@@ -3,7 +3,7 @@ var React = require('react/addons');
 var Overlay = React.createClass({
 
   propTypes: {
-    onClick: React.PropTypes.func
+    onTouchTap: React.PropTypes.func
   },
 
   render: function() {

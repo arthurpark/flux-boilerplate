@@ -1,5 +1,6 @@
 var React = require('react/addons');
 var moment = require('moment');
+var Tap = require('../../mixins/tap');
 
 const WEEKDAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const MONTHS = [
@@ -7,7 +8,7 @@ const MONTHS = [
   'August', 'September', 'October', 'November', 'December'];
 
 var MonthEventGrid = React.createClass({
-  // mixins : [],
+  mixins : [Tap],
 
   propTypes: {
     date: React.PropTypes.instanceOf(Date).isRequired,
@@ -74,7 +75,7 @@ var MonthEventGrid = React.createClass({
     } else {
       classes = 'day-cell';
     }
-    return <div key={index} className={classes} onClick={this._handleDayTouchTap.bind(this, date)}>
+    return <div key={index} className={classes} onTouchTap={this._handleDayTouchTap.bind(this, date)}>
       <div className="events-container">
 
       </div>
