@@ -7,6 +7,7 @@ var server = require('./gulp/server');
 var scripts = require('./gulp/scripts');
 var styles = require('./gulp/styles');
 var watch = require('./gulp/watch');
+var copy = require('./gulp/copy');
 var copyLibs = require('./gulp/copy-libs');
 var copyHTML = require('./gulp/copy-html');
 
@@ -16,6 +17,7 @@ gulp.task('styles',  styles);
 gulp.task('watch', watch);
 gulp.task('copy:html', copyHTML);
 gulp.task('copy:libs', copyLibs);
+gulp.task('copy', copy);
 
 gulp.task('build', [
   'scripts',
@@ -34,4 +36,9 @@ gulp.task('default', [
   'copy:libs',
   'copy:html',
   'watch'
+  ]);
+
+gulp.task('heroku:production', [
+  'build',
+  'copy'
   ]);
