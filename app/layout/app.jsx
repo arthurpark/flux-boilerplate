@@ -72,8 +72,8 @@ var App = React.createClass({
   },
 
   changeTitle: function(title, e) {
-    console.log('changeTitle', arguments);
-    this.setState({ title: title, isSideMenuOpen: false });
+    // console.log('changeTitle', arguments);
+    // this.setState({ title: title, isSideMenuOpen: false });
   },
 
   // This means logging out.

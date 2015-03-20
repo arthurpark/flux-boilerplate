@@ -27,41 +27,39 @@ var MonthEventGrid = React.createClass({
 
   // componentDidMount: function() {},
 
-  _getFirstSunday: function(date) {
+  getFirstSunday: function(date) {
     var day = date.getDay();
     var diff = date.getDate() - day;
     return new Date(new Date(date.getTime()).setDate(diff));
   },
 
-  _getWeeks: function(date) {
+  getWeeks: function(date) {
+    var firstDay = moment(date).startOf('month').startOf('week').startOf('day');
+    var lastDay = moment(date).endOf('month').endOf('week').startOf('day');
+    var days = lastDay.diff(firstDay, 'days');
     var weeks = [];
-    var month = date.getMonth();
-    var daysInMonth = new Date(date.getFullYear(), month + 1, 0).getDate();
-    var daysPrevMonth = new Date(date.getFullYear(), month - 1, 0).getDate();
-    var firstDay = new Date(date.getFullYear(), month, 1);
-    var firstSunday = this._getFirstSunday(firstDay);
+    var compare = firstDay.clone();
 
-    // Show 6 weeks for every month
-    for (var i = 0; i < 6; i++) {
+    while (compare.isBefore(lastDay)) {
       var week = [];
-      for (var j = 0; j < 7; j++) {
-        var dayFromFirstSunday = i* 7 + j + 1;
-        week.push(new Date(new Date(firstSunday.getTime()).setDate(dayFromFirstSunday)));
+      for (var day in WEEKDAYS) {
+        week.push(compare.clone().toDate());
+        compare.add(1, 'days');
       }
       weeks.push(week);
     }
     return weeks;
   },
 
-  _renderWeek: function(week, index) {
+  renderWeek: function(week, index) {
     return (
       <div key={index} className="week-row">
-        {week.map(this._renderDay)}
+        {week.map(this.renderDay)}
       </div>
     );
   },
 
-  _renderDay: function(date, index) {
+  renderDay: function(date, index) {
     var today = new Date();
     var isCurrentMonth = this.props.date.getMonth() === today.getMonth();
     var clasess = '';
@@ -75,7 +73,7 @@ var MonthEventGrid = React.createClass({
     } else {
       classes = 'day-cell';
     }
-    return <div key={index} className={classes} onTouchTap={this._handleDayTouchTap.bind(this, date)}>
+    return <div key={index} className={classes} onTouchTap={this.handleDayTouchTap.bind(this, date)}>
       <div className="events-container">
 
       </div>
@@ -83,17 +81,17 @@ var MonthEventGrid = React.createClass({
   },
 
   render: function() {
-    var weeks = this._getWeeks(this.props.date);
+    var weeks = this.getWeeks(this.props.date);
     var today = new Date();
     var isCurrentMonth = this.props.date.getMonth() === today.getMonth();
     return(
       <div className="event-grid">
-        {weeks.map(this._renderWeek)}
+        {weeks.map(this.renderWeek)}
       </div>
     );
   },
 
-  _handleDayTouchTap: function(date, e) {
+  handleDayTouchTap: function(date, e) {
     // console.log(e, date, arguments);
     if (this.props.onDayTouchTap) this.props.onDayTouchTap(e, date);
   }

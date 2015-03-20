@@ -28,7 +28,7 @@ var MonthGrid = React.createClass({
     return new Date(new Date(date.getTime()).setDate(diff));
   },
 
-  _getWeeks: function(date) {
+  getWeeks: function(date) {
     var firstDay = moment(date).startOf('month').startOf('week').startOf('day');
     var lastDay = moment(date).endOf('month').endOf('week').startOf('day');
     var days = lastDay.diff(firstDay, 'days');
@@ -39,7 +39,7 @@ var MonthGrid = React.createClass({
       var week = [];
       for (var day in WEEKDAYS) {
         week.push(compare.clone().toDate());
-        compare.add('days', 1);
+        compare.add(1, 'days');
       }
       weeks.push(week);
     }
@@ -47,44 +47,36 @@ var MonthGrid = React.createClass({
   },
 
   render: function() {
-    var weeks = this._getWeeks(this.props.date);
+    var weeks = this.getWeeks(this.props.date);
     var today = new Date();
     var isCurrentMonth = this.props.date.getMonth() === today.getMonth();
     return(
       <div className="month-grid">
-        {weeks.map(this._renderWeek)}
+        {weeks.map(this.renderWeek)}
       </div>
     );
   },
 
-  _renderWeek: function(week, index) {
+  renderWeek: function(week, index) {
     var me = this;
     return (
       <div key={index} className="week-row">
         {week.map(function(date, dayIndex) {
-          return me._renderDay(date, dayIndex, index);
+          return me.renderDay(date, dayIndex, index);
         })}
       </div>
     );
   },
 
-  _renderDay: function(date, index, weekIndex) {
-    var isCurrentMonth = (date.getMonth() === this.props.date.getMonth());
+  renderDay: function(date, index, weekIndex) {
     var today = new Date();
-    var isToday = date.toDateString() === today.toDateString();
-    var isSelected = date.toDateString() === this.props.selected.toDateString();
-    var classes = 'day-cell';
-
-    if (isCurrentMonth) {
-      classes += ' current-month'
-      if (isToday) {
-        classes += ' today';
-      }
-    }
-
-    if (isSelected) {
-      classes += ' selected';
-    }
+    var cx = React.addons.classSet;
+    var classes = cx({
+      'day-cell': true,
+      'current-month': (date.getMonth() === this.props.date.getMonth()),
+      'today': (date.toDateString() === today.toDateString()),
+      'selected': (date.toDateString() === this.props.selected.toDateString())
+    });
 
     var weekDay = <span className="week-day">{WEEKDAYS[index]}</span>;
 
