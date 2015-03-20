@@ -4,7 +4,8 @@
   "description": "Boilerplate for a flux app",
   "main": "./",
   "scripts": {
-    "start": "clear && gulp"
+    "start": "clear && gulp build",
+    "postinstall": "gulp"
   },
   "repository": {
     "type": "git",
