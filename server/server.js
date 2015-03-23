@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-// var APP_ROOT_PATH = __dirname + '/../../public';
+
 var APP_ROOT_PATH = __dirname + '/../public';
 
 app.use("/", express.static(APP_ROOT_PATH));

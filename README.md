@@ -1,5 +1,6 @@
 # Flux Boilerpate
-Flux boilerplate
+
+Flux boilerplate with react-router
 
 ## Getting started
 
@@ -12,7 +13,7 @@ npm install
 Then run
 
 ```
-npm start
+npm run dev
 
 ```
 
@@ -28,3 +29,7 @@ and go to http://localhost:4000
 3. `heroku config:set NODE_ENV=production`
 
 4. `heroku:production`
+
+# Demo
+
+[https://flux-boilerplate.herokuapp.com](https://flux-boilerplate.herokuapp.com)
