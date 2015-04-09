@@ -7,7 +7,7 @@ Flux boilerplate with react-router
 To install, run
 
 ```
-npm install
+npm install && bower isntall
 ```
 
 Then run
